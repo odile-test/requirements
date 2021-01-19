@@ -1,0 +1,17 @@
+<requirements>
+<requirement>
+  <docid>XIFU-DRE-DMX-FW-R-0010</docid>
+  <title>Host FPGA</title>
+  <description>The firmware shall be operated on a NG-Large FPGA (ref. NX1H140TSP).</description>
+</requirement>
+<requirement>
+  <docid>XIFU-DRE-DMX-FW-R-0020</docid>
+  <title>CNES VHDL handbook</title>
+  <description>The firmware shall be compliant with design and VHDL handbook for VLSI developments, CNES edition, (AD02)</description>
+</requirement>
+<requirement>
+  <docid>XIFU-DRE-DMX-FW-R-0030</docid>
+  <title>Firmware external reference clock</title>
+  <description>The firmware shall use an external reference clock with a frequency superior to 100MHz and inferior to 120MHz.</description>
+</requirement>
+</requirements>

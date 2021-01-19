@@ -1,0 +1,49 @@
+docid,title,description
+XIFU-DRE-DMX-FW-R-0010,Host FPGA,The firmware shall be operated on a NG-Large FPGA (ref. NX1H140TSP).
+XIFU-DRE-DMX-FW-R-0020,CNES VHDL handbook,"The firmware shall be compliant with design and VHDL handbook for VLSI developments, CNES edition, (AD02)"
+XIFU-DRE-DMX-FW-R-0030,Firmware external reference clock,The firmware shall use an external reference clock with a frequency superior to 100MHz and inferior to 120MHz.
+XIFU-DRE-DMX-FW-R-0040,Number of columns,The firmware shall process 4 columns
+XIFU-DRE-DMX-FW-R-0050,Multiplexing factor,The firmware shall apply a multiplexing factor multFact = 34.
+XIFU-DRE-DMX-FW-R-0060,Synchronization,The firmware shall synchronize the pixel sequence processing with the rising edge of an external synchronization signal “sync”.
+XIFU-DRE-DMX-FW-R-0070,Error signal: Reference of the ADC,"For each column, the firmware shall drive an ADC AD9254S to do the acquisition of the error signal from the detection chain"
+XIFU-DRE-DMX-FW-R-0080,Error signal: Clock for the ADC,The firmware shall provide the clock signal to the ADCs in charge of the acquisition of the error signals.
+XIFU-DRE-DMX-FW-R-0090,Error signal: Sampling frequency of the ADC,The sampling frequency of the ADCs in charge of the acquisition of the error signals shall be equal to the frequency of the reference clock (fRefClock).
+XIFU-DRE-DMX-FW-R-0100,Error signal: Fine timing correction,"For each column, the firmware shall have the ability to delay the error signal by 0 to 32 periods of the reference clock (fRef) according to a dedicated command."
+XIFU-DRE-DMX-FW-R-0110,Error signal: Boxcar filter,The firmware shall apply a boxcar type filter on the ADC data. The size of the boxcar shall be tunable by command between 1 and 16.
+XIFU-DRE-DMX-FW-R-0120,Error signal: Down-sampling,The firmware shall down-sample the error signal with a rate fRef / fRow.
+XIFU-DRE-DMX-FW-R-0130,Error signal: Coarse timing correction,"For each column, the firmware shall have the ability to delay the error signal by 0 to 33 periods of fRow according to a dedicated command."
+XIFU-DRE-DMX-FW-R-0140,SQ1 feedback: computation of the feedback,"For each column and sequentially for each pixel, the firmware shall compute a feedback signal according to the following formulas:
+FBp, n+1 = FBp, n + kip.Ep, n + dFBp, n
+dFBp, n = ap.kip.Ep, n-1 + dFBp, n-1
+p is the pixel index, n is the frame index and ap=1/(1+τ)"
+XIFU-DRE-DMX-FW-R-0150,SQ1 feedback: computation rate,The computation rate of the feedback signal for a column is fRow.
+XIFU-DRE-DMX-FW-R-0160,SQ1 feedback: “ki” parameter,"The parameter “ki” of the feedback formula shall be configurable by command for each pixel between TBD and TBD, with a resolution TBD."
+XIFU-DRE-DMX-FW-R-0170,SQ1 feedback: “a” parameter,"The parameter “a” of the feedback formula shall be configurable by command for each pixel between TBD and TBD, with a resolution TBD."
+XIFU-DRE-DMX-FW-R-0180,SQ1 feedback: pulse shaping,"For each column, the firmware shall “up-sample” the MUX SQUID feedback data at the frequency of the reference clock and apply a digital filter according to the following formula:
+yn = (1+a) xn - a yn-1
+x and y are respectively the input and the output of the filter, n is the sample index."
+XIFU-DRE-DMX-FW-R-0190,SQ1 feedback: “a” parameter of pulse shaping,"The parameter “a” of pulse shaping digital filter shall be configurable by command for each column between TBD and TBD, with a resolution TBD."
+XIFU-DRE-DMX-FW-R-0200,SQ1 feedback: Reference of the DAC,"For each column, the firmware shall drive a DAC DAC5675A-SP to output the feedback signal for the SQUID SQ1."
+XIFU-DRE-DMX-FW-R-0210,SQ1 feedback: Clock for the DAC,The firmware shall provide the clock signal to the DACs in charge of the SQUID SQ1 feedback signals.
+XIFU-DRE-DMX-FW-R-0220,SQ1 feedback: Sampling frequency of the DAC,The sampling frequency of the DACs in charge of the SQUID SQ1 feedback signals shall be equal to the frequency of the reference clock (fRefClock).
+XIFU-DRE-DMX-FW-R-0230,SQ1 feedback: Coarse timing correction,"For each column, the firmware shall have the ability to delay the SQ1 feedback signal by 0 to 33 periods of fRow according to a dedicated command."
+XIFU-DRE-DMX-FW-R-0240,SQ1 feedback: Fine timing correction,"For each column, the firmware shall have the ability to delay the SQ1 feedback signal by 0 to 32 periods of the reference clock (fRef) according to a dedicated command."
+XIFU-DRE-DMX-FW-R-0250,Science data,"For each column and sequentially for each pixel, the firmware shall compute the science data according to the following formula:
+SCp, n = FBp, n + kmixp.Ep, n
+p is the pixel index, n is the frame index"
+XIFU-DRE-DMX-FW-R-0260,Science data: “kmix” parameter,"The parameter “kmix” of the science data formula shall be configurable by command for each pixel between TBD and TBD, with a resolution TBD."
+XIFU-DRE-DMX-FW-R-0270,Auto-relock,"For each pixel, if the SQUID remains far from its lock point (i.e. Fb – Fb0 superior to FbThreshold) during too long (i.e. delay superior to relock delay) the firmware shall reset the feedback to its lock point value (i.e Fb0)."
+XIFU-DRE-DMX-FW-R-0280,Relock delay (relockDelay),"The parameter “relockDelay” shall be configurable by command for each column between TBD and TBD, with a resolution TBD."
+XIFU-DRE-DMX-FW-R-0290,Feedback Threshold (fbThreshold),"The parameter “fbThreshold” shall be configurable by command for each column between TBD and TBD, with a resolution TBD."
+XIFU-DRE-DMX-FW-R-0300,Delock monitoring,The firmware shall monitor the number of Auto-relocks for each pixel and report these values in the housekeeping (TBC).
+XIFU-DRE-DMX-FW-R-0310,Loop delay characterization for SQ1 feedback signal,"For each column, the firmware shall have the ability to characterize the delay in the SQ1 feedback loop (i.e. delay between the SQ1 feedback signal at firmware output and the Error signal at firmware input)."
+XIFU-DRE-DMX-FW-R-0320,Loop delay characterization for SQ2 feedback signal,"For each column, the firmware shall have the ability to characterize the delay in the SQ2 feedback loop (i.e. delay between the SQ2 feedback signal at firmware output and the Error signal at firmware input)."
+XIFU-DRE-DMX-FW-R-0330,Test patterns,"For each column, the firmware shall have the ability to send 2 test patterns on each DAC output. The content of the test patterns shall be configurable by commands. The length of the test patterns is TBD."
+XIFU-DRE-DMX-FW-R-0340,Dump of raw data,"The firmware shall have the ability to send a dump of raw data to the EP over a duration of TBD s. The raw data are selected by command and can be one of the following:
+The ADC values of the error signal in column 0
+The ADC values of the error signal in column 1
+The ADC values of the error signal in column 2
+The ADC values of the error signal in column 3"
+XIFU-DRE-DMX-FW-R-0350,Acquisition of analogue housekeepings,The firmware shall manage the acquisition of 16 (TBC) analogue housekeepings from the DEMUX module (voltages and temperatures). The frequency for the HK sampling is 2 Hz (TBC) +/- TBD Hz.
+XIFU-DRE-DMX-FW-R-0360,Transfer of science data and housekeepings,"The firmware shall transmit the science data and the housekeepings according to the protocol described in Figure 6, Figure 7, Table 15."
+XIFU-DRE-DMX-FW-R-0370,Reception of telecommands,The firmware shall receive its telecommands according to the protocol defined in RDXX.
