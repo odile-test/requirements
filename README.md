@@ -1,2 +1,2 @@
 # requirements
-Set of Python scripts to interface wu=ith TestLink
+Set of Python scripts to interface with TestLink
