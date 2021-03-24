@@ -6,9 +6,9 @@
 #
 """
 1. Open 0065-Requirements.docx document and read the tables.
-2. Convert to EXCEL to 0065-Requirements.xlsx file
-3. convert to CSV to 0065-Requirements.csv file
-4. convert to XML to 0065-Requirements.xml file
+2. Convert from WORD to EXCEL ==> 0065-Requirements.xlsx file
+3. convert from EXCEL to CSV ==> 0065-Requirements.csv file
+4. convert from CSV to XML ==> 0065-Requirements.xml file
 """
 from docx.api import Document
 import os
