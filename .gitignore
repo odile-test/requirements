@@ -128,7 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Eclipse project settings
+# Eclipse project settings (OCJ)
 .settings
 .project
 .pydevproject
