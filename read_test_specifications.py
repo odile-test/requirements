@@ -5,7 +5,7 @@
 #        Odile Coeur-Joly, Toulouse, France
 #
 """
-1. Open 0065-Test-Procedure.docx document and read the tables.
+1. Open Test-Procedure.docx document and read the tables.
 2. Convert from WORD to EXCEL ==> 0065-Requirements.xlsx file
 3. convert from EXCEL to CSV ==> 0065-Requirements.csv file
 4. convert from CSV to XML ==> 0065-Requirements.xml file
